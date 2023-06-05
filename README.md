@@ -20,7 +20,7 @@ Source code for the portfolio page can be found here: [Work-Day-Scheduler HTML](
 ![work day scheduler demo]()
 
 
-[Work Day Scheduler App](https://ivignollesjeong.github.io/code-quiz/)
+[Work Day Scheduler App](https://ivignollesjeong.github.io/work-day-scheduler/)
 
 The application functions as follows:
 
