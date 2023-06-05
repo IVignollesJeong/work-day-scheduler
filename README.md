@@ -17,7 +17,7 @@ Source code for the portfolio page can be found here: [Work-Day-Scheduler HTML](
 
 ## Usage
 
-![work day scheduler demo]()
+![work day scheduler demo](https://github.com/IVignollesJeong/work-day-scheduler/assets/131202032/ffd036d9-5f24-478d-9383-6b9d54b7b6a9)
 
 
 [Work Day Scheduler App](https://ivignollesjeong.github.io/work-day-scheduler/)
