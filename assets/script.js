@@ -1,47 +1,22 @@
-
-
-
-
-
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-
-
-
 $(document).ready(function () {
   $('.saveBtn').on('click', function () {
-    //get nearby values
+    //get values of the time block and its contents
     var value = $(this).siblings('.description').val();
     var time = $(this).parent().attr('id');
 
+    //saves these values in local storage
     localStorage.setItem(time, value);
   });
 
 
   function hourUpdater () {
+    //dayjs used to get current hour for time block comparison
     var currentHour = dayjs().hour();
     //loop over time blocks
     $('.time-block').each(function () {
+
+      // grabs the ID of the time block, creates array of the value inside (hour-x), splits the array at '-', gets that value (x).
+      // example: 'hour-13' turns into the value '13'. This value is then compared to dayjs current hour to determine block color class.
       var timeBlockHour = parseInt($(this).attr('id').split('-')[1]);
 
       if (timeBlockHour < currentHour) {
@@ -63,8 +38,11 @@ $(document).ready(function () {
 
   hourUpdater();
   
+  // sets interval to run time block hour checker function every 10 seconds.
   setInterval(hourUpdater, 10000);
-//load any saved data from LocalStorage
+
+
+// loads the data saved in local storage in relation to what time block it is in
   $('#hour-9 .description').val(localStorage.getItem('hour-9'));
   $('#hour-10 .description').val(localStorage.getItem('hour-10'));
   $('#hour-11 .description').val(localStorage.getItem('hour-11'));
@@ -76,5 +54,6 @@ $(document).ready(function () {
   $('#hour-17 .description').val(localStorage.getItem('hour-17'));
 })
 
+// displays current date, time in header.
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
